@@ -70,6 +70,7 @@ void Menu::ajouterPlat(string& nom, double montant, double cout) {
 
 bool Menu :: lireMenu(string& fichier) {
 	string type;
+	
 
 	switch (type_){
 		case (Matin):
@@ -88,23 +89,24 @@ bool Menu :: lireMenu(string& fichier) {
 	string tempString;
 	string nom;
 	double montant;
-	double cout;
-	
+	double prix;	
+
 	if (fichierO.fail()) {
 		return false;
 	}
-	while (!fichierO.eof()) {
-		fichierO >> ws;
+
+	while (!ws(fichierO).eof()) {
+
 		getline(fichierO, tempString);
 	
 		if (tempString == type) {
-			fichierO >> nom >> ws >> montant >> ws >> cout;
-			ajouterPlat(nom, montant, cout);
-			
 			do{
-			fichierO >> nom >> ws >> montant >> ws >> cout;
+			fichierO >> nom >> ws >> montant >> ws >> prix;
 			if (nom[0] != '-') {
-				ajouterPlat(nom, montant, cout);
+				ajouterPlat(nom, montant, prix);
+			}
+			else {
+				tempString = nom;
 			}
 			} while (nom[0] != '-');
 			
