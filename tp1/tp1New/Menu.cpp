@@ -85,38 +85,58 @@ bool Menu :: lireMenu(string& fichier) {
 
 	}
 
-	ifstream fichierO("polyFood.txt");
-	string tempString;
+	ifstream fichierO(fichier);
+	string tempString, menuCurrent;
 	string nom;
 	double montant;
 	double prix;	
+	bool menuGenerer =false;
 
 	if (fichierO.fail()) {
 		return false;
 	}
 
-	while (!ws(fichierO).eof()) {
 
+	
+	do {
 		getline(fichierO, tempString);
-	
-		if (tempString == type) {
-			do{
-			fichierO >> nom >> ws >> montant >> ws >> prix;
-			if (nom[0] != '-') {
-				ajouterPlat(nom, montant, prix);
-			}
-			else {
-				tempString = nom;
-			}
-			} while (nom[0] != '-');
-			
+	} while (tempString != type);
+
+	do {
+		fichierO >> nom >> ws >> montant >> ws >> prix;
+		if (nom[0] != '-') {
+			ajouterPlat(nom, montant, prix);
 		}
+	} while (nom[0] != '-');
 	
-	}
 
+	
+
+	
+
+	/*
+
+
+	do {
+		
+
+		do {
+
+			if (tempString == type) {
+				fichierO >> nom >> ws >> montant >> ws >> prix;
+				if (nom[0] != '-') {
+					ajouterPlat(nom, montant, prix);
+				}
+
+			}
+		} while (nom[0] != '-' );
+
+	} while (nbPlats_ < 0);
+	*/
+	
 	fichierO.close();
+	
 	return true;
-
 }
 
 

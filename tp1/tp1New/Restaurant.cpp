@@ -23,6 +23,7 @@ Restaurant::Restaurant(string& fichier, string& nom, TypeMenu moment) {
 	menuMatin_ = new Menu(fichier, Matin);
 	menuMidi_ = new Menu(fichier, Midi);
 	menuSoir_ = new Menu (fichier, Soir);
+
 	capaciteTables_ = 0;
 	tables_ = new Table*[nbTables_];
 	nbTables_ = 0;
@@ -53,8 +54,9 @@ void Restaurant::lireTable(string& fichier) {
 	string tempString;
 	int id;
 	int nbPlaces;
-	getline(fichierO, tempString);
+	
 	while (!fichierO.eof()) {
+		getline(fichierO, tempString);
 		if (tempString == "-TABLES") {
 			while (!fichierO.eof()){
 				fichierO >> id >> ws >> nbPlaces >> ws;
@@ -64,7 +66,6 @@ void Restaurant::lireTable(string& fichier) {
 			
 
 		}
-		getline(fichierO, tempString);
 	}
 	fichierO.close();
 }
@@ -79,8 +80,10 @@ void Restaurant ::libererTable(int id) {
 	
 }
 void Restaurant::commanderPlat(string& nom, int idTable) {
-
-	Plat * plat = new Plat;
+	string nomPlat = nom;
+	double montant = 0.0;
+	double prix = 0.0;
+	Plat * plat = new Plat(nom, prix,montant);
 	switch (momentJournee_) {
 		case (Matin):
 			plat = menuMatin_->trouverPlat(nom);
@@ -92,6 +95,7 @@ void Restaurant::commanderPlat(string& nom, int idTable) {
 			plat = menuSoir_->trouverPlat(nom);
 		break;
 	}
+
 	tables_[idTable - 1]->commander(plat);
 }
 	
@@ -109,6 +113,10 @@ void Restaurant::placerClients(int nbClients) {
 	}
 	if (id == 0) {
 		cout << " Il n'a pas de table disponible!" <<endl;
+	}
+	else
+	{
+		tables_[id - 1]->tableOccuper();
 	}
 }
 

@@ -26,6 +26,7 @@ public:
 	//setters 
 	void setId(int id); 
 	void libererTable();
+	void tableOccuper();
 	//autres methodes 
 	void commander(Plat* plat); 
 	double getChiffreAffaire(); 

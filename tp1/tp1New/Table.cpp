@@ -42,6 +42,10 @@ void  Table::libererTable() {
 	nbPlats_ = 0;
 }
 
+void Table::tableOccuper() {
+	occupee_ = true;
+}
+
 
 //autres methodes 
 void Table ::commander(Plat* plat) {
