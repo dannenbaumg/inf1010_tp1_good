@@ -120,7 +120,7 @@ bool Menu :: lireMenu(string& fichier) {
 
 //affichage
 void  Menu:: afficher() {
-	cout << type_ << ':' << endl;
+
 	switch (type_) {
 	case (Matin):
 		cout <<  "-MATIN" << endl;;

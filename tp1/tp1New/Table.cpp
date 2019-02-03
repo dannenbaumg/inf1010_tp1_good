@@ -37,7 +37,9 @@ void  Table::setId(int id) {
 
 void  Table::libererTable() {
 	occupee_ = false;
-	delete[] commande_;
+	if (nbPlats_ > 0) {
+		delete[] commande_;
+	}
 	commande_ = nullptr;
 	nbPlats_ = 0;
 }
@@ -55,7 +57,9 @@ void Table ::commander(Plat* plat) {
 
 double Table::getChiffreAffaire() {
 	double profit = 0;
-	for (int i = 0; 1 < nbPlats_; i++) {
+
+	for (int i = 0; i < nbPlats_; i++) {
+
 		profit += (commande_[i]->getPrix() - commande_[i]->getCout());
 
 	}
@@ -71,7 +75,7 @@ void Table::afficher() {
 		cout << "occuper.  Voici la commande passer par les clients: " << endl;
 	}
 	else {
-		cout << "est libre. Voici la commande passer par les clients: " << endl;
+		cout << "est libre. " << endl;
 	}
 
 	for (int i = 0; i < nbPlats_; i++) {

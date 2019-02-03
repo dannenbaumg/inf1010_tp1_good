@@ -72,11 +72,10 @@ void Restaurant::lireTable(string& fichier) {
 	
 void Restaurant ::libererTable(int id) {
 	
-	
-			chiffreAffaire_ += tables_[id-1]->getChiffreAffaire();
-			tables_[id - 1]->libererTable();
-			cout << " La table numero " << id << "est libre." << endl;
-		
+	if (id <= nbTables_) {
+		chiffreAffaire_ += tables_[id - 1]->getChiffreAffaire();
+		tables_[id - 1]->libererTable();
+	}
 
 	
 }
@@ -119,12 +118,13 @@ void Restaurant::placerClients(int nbClients) {
 
 //affichage 
 void Restaurant::afficher() {
-	cout << nom_ << endl;
-	cout << "Chiffres d'affaires : " << chiffreAffaire_ << endl;;
+
+	cout << "Chiffres d'affaires : " << chiffreAffaire_ << "$" << endl;;
 	cout << "Voici les tables: " << endl;
 
 	for (int i = 0; i < nbTables_; i++) {
 		tables_[i]->afficher();
+		cout << endl;
 	}
 	
 	cout << "Voici son menu:  " << endl;
