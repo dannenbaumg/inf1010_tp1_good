@@ -50,7 +50,7 @@ int main() {
 	//Muffin - Table 4 
 	poly.commanderPlat(Muffin, 4);
 	//Oeuf - Table 4 
-	poly.commanderPlat(Oeuf, 4);
+	//poly.commanderPlat(Oeuf, 4);
 	
 
 	//afficher le restaurant

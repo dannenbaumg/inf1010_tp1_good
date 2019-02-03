@@ -111,28 +111,6 @@ bool Menu :: lireMenu(string& fichier) {
 	
 
 	
-
-	
-
-	/*
-
-
-	do {
-		
-
-		do {
-
-			if (tempString == type) {
-				fichierO >> nom >> ws >> montant >> ws >> prix;
-				if (nom[0] != '-') {
-					ajouterPlat(nom, montant, prix);
-				}
-
-			}
-		} while (nom[0] != '-' );
-
-	} while (nbPlats_ < 0);
-	*/
 	
 	fichierO.close();
 	
@@ -143,9 +121,20 @@ bool Menu :: lireMenu(string& fichier) {
 //affichage
 void  Menu:: afficher() {
 	cout << type_ << ':' << endl;
-	cout << nbPlats_ << endl;
+	switch (type_) {
+	case (Matin):
+		cout <<  "-MATIN" << endl;;
+		break;
+	case (Midi):
+		cout << "-MIDI" << endl;;
+		break;
+	case (Soir):
+		cout << "-SOIR" << endl;;
+		break;
+
+	}
 	for (int i = 0; i < nbPlats_; i++) {
-		cout << &listePlats_[i];
+		listePlats_[i]->afficher();
 
 	}
 

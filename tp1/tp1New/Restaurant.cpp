@@ -75,28 +75,25 @@ void Restaurant ::libererTable(int id) {
 	
 			chiffreAffaire_ += tables_[id-1]->getChiffreAffaire();
 			tables_[id - 1]->libererTable();
+			cout << " La table numero " << id << "est libre." << endl;
 		
 
 	
 }
 void Restaurant::commanderPlat(string& nom, int idTable) {
-	string nomPlat = nom;
-	double montant = 0.0;
-	double prix = 0.0;
-	Plat * plat = new Plat(nom, prix,montant);
+	
 	switch (momentJournee_) {
 		case (Matin):
-			plat = menuMatin_->trouverPlat(nom);
+			tables_[idTable-1]->commander(menuMatin_->trouverPlat(nom));
 		break;
 		case (Midi):
-			plat = menuMidi_->trouverPlat(nom);
+			tables_[idTable - 1]->commander(menuMidi_->trouverPlat(nom));;
 		break;
 		case (Soir):
-			plat = menuSoir_->trouverPlat(nom);
+			tables_[idTable - 1]->commander(menuSoir_->trouverPlat(nom));
 		break;
 	}
 
-	tables_[idTable - 1]->commander(plat);
 }
 	
 void Restaurant::placerClients(int nbClients) {
@@ -123,7 +120,17 @@ void Restaurant::placerClients(int nbClients) {
 //affichage 
 void Restaurant::afficher() {
 	cout << nom_ << endl;
-	cout << "Chiffres d'affaires : " << chiffreAffaire_;
+	cout << "Chiffres d'affaires : " << chiffreAffaire_ << endl;;
+	cout << "Voici les tables: " << endl;
+
+	for (int i = 0; i < nbTables_; i++) {
+		tables_[i]->afficher();
+	}
+	
+	cout << "Voici son menu:  " << endl;
+	menuMatin_->afficher();
+	menuMidi_->afficher();
+	menuSoir_->afficher();
 }
 
 Restaurant :: ~Restaurant() {

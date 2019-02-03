@@ -41,7 +41,5 @@ void Plat::setCout(double cout) {
 
 //affichage
 void Plat::afficher() {
-	cout << getNom() << endl;
-	cout << getPrix() << endl; 
-	cout << getCout() << endl;
+	cout << getNom() << "-" << getPrix() << "$" << "(" << getCout() << "$ pour le restaurant)" << endl;
 }

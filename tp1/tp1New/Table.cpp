@@ -49,8 +49,8 @@ void Table::tableOccuper() {
 
 //autres methodes 
 void Table ::commander(Plat* plat) {
-	commande_[nbPlats_] = plat;
-	nbPlats_ ++;
+	if(nbPlats_ <= capacite_ && estOccupee())
+		commande_[nbPlats_++] = plat;
 }
 
 double Table::getChiffreAffaire() {
@@ -66,10 +66,19 @@ double Table::getChiffreAffaire() {
 
 //affichage
 void Table::afficher() {
-	cout << getId() << endl;
-	cout << "Nombre de plats: " << nbPlats_ << endl;
-	cout << "Nombre de places : " << getNbPlaces();
-	cout << "Profit: " << getChiffreAffaire() << endl;
+	cout << "La table numero " << getId() << "est : ";
+	if (estOccupee()) {
+		cout << "occuper.  Voici la commande passer par les clients: " << endl;
+	}
+	else {
+		cout << "est libre. Voici la commande passer par les clients: " << endl;
+	}
+
+	for (int i = 0; i < nbPlats_; i++) {
+
+		commande_[i]->afficher(); 
+	}
+	
 }
 
 Table::~Table() {

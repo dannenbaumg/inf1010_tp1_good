@@ -2,5 +2,6 @@
 c:\users\danne\documents\inf1010_tp1_good\tp1\tp1new\restaurant.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\users\danne\documents\inf1010_tp1_good\tp1\tp1new\restaurant.cpp(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\users\danne\documents\inf1010_tp1_good\tp1\tp1new\restaurant.cpp(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\danne\documents\inf1010_tp1_good\tp1\tp1new\restaurant.cpp(107): warning C4018: '<': signed/unsigned mismatch
+c:\users\danne\documents\inf1010_tp1_good\tp1\tp1new\restaurant.cpp(104): warning C4018: '<': signed/unsigned mismatch
+c:\users\danne\documents\inf1010_tp1_good\tp1\tp1new\restaurant.cpp(126): warning C4018: '<': signed/unsigned mismatch
   tp1New.vcxproj -> C:\Users\danne\Documents\inf1010_tp1_good\tp1\Debug\tp1New.exe
